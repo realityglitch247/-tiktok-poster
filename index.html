@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Automate glitch vibe video uploads to TikTok with RealityGlitch247 Poster.">
     <title>RealityGlitch247 TikTok Poster</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Add a favicon.ico file to your repo -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Optional: Add favicon.ico to repo root -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,11 +92,12 @@
         .btn:hover {
             background-color: #cc0040;
         }
-        video {
+        video, img {
             width: 100%;
             max-width: 600px;
             margin: 20px 0;
             border-radius: 5px;
+            display: block;
         }
         footer {
             background-color: #000;
@@ -134,6 +134,7 @@
         <a href="#home">Home</a>
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
+        <a href="#security">Security & Privacy</a>
         <a href="#contact">Contact</a>
     </nav>
 
@@ -146,8 +147,8 @@
         <section>
             <h2>Welcome to RealityGlitch247 Poster</h2>
             <p>This is a powerful script designed to automatically generate and upload AI-created glitch vibe videos to TikTok. It integrates seamlessly with TikTok's API for authentication and content posting, making it easy for creators to share their unique content without manual effort.</p>
-            <p>Whether you're a content creator, developer, or just experimenting with automation, this tool handles everything from video creation to direct posting on your TikTok profile.</p>
-            <a href="https://www.tiktok.com/v2/auth/authorize/?client_key=YOUR_CLIENT_KEY&scope=user.info.basic,video.upload,video.publish&response_type=code&redirect_uri=https://realityglitch247.github.io/-tiktok-poster/&state=state" class="btn">Get Started with TikTok Auth</a> <!-- Replace with your actual auth URL -->
+            <p>Whether you're a content creator, developer, or just experimenting with automation, this tool handles everything from video creation to direct posting on your TikTok profile. It's built to run locally on your setup, integrating with tools like your YouTube Shorts bot.</p>
+            <a href="https://www.tiktok.com/v2/auth/authorize/?client_key=YOUR_CLIENT_KEY&scope=user.info.basic,video.upload,video.publish&response_type=code&redirect_uri=https://realityglitch247.github.io/-tiktok-poster/&state=state" class="btn">Get Started with TikTok Auth</a> <!-- Replace YOUR_CLIENT_KEY with your actual key -->
         </section>
 
         <section id="features">
@@ -155,15 +156,15 @@
             <div class="features">
                 <div class="feature">
                     <h3>Automated Uploads</h3>
-                    <p>Upload glitch vibe videos directly to TikTok as drafts or published posts using the Content Posting API. Supports scheduling and batch uploads.</p>
+                    <p>Upload glitch vibe videos directly to TikTok as drafts or published posts using the Content Posting API. Supports scheduling, batch processing, and custom captions/hashtags.</p>
                 </div>
                 <div class="feature">
                     <h3>Secure Authentication</h3>
-                    <p>Uses OAuth with PKCE for safe and secure login via TikTok's Login Kit. No credentials stored insecurely.</p>
+                    <p>Uses OAuth with PKCE for safe login via TikTok's Login Kit. No sensitive data is stored beyond temporary tokens.</p>
                 </div>
                 <div class="feature">
                     <h3>Easy Integration</h3>
-                    <p>Run the script locally on your Windows PC or server, integrated with your existing bots for YouTube Shorts and crypto trading. Customizable via config files.</p>
+                    <p>Run the script locally on Windows or servers, compatible with your existing bots for YouTube Shorts and crypto trading. Configurable via simple JSON files.</p>
                 </div>
             </div>
         </section>
@@ -171,21 +172,30 @@
         <section id="how-it-works">
             <h2>How It Works</h2>
             <ol>
-                <li>Authorize the app via TikTok login – you'll be redirected back here with a code.</li>
-                <li>Copy the code and input it into your script.</li>
-                <li>The script generates videos and uploads them automatically to your TikTok account.</li>
-                <li>Monitor uploads and enjoy automated content creation!</li>
+                <li>Click "Get Started" to authorize via TikTok login – you'll be redirected back here with an auth code.</li>
+                <li>Copy the code and input it into the script console.</li>
+                <li>Configure video generation parameters (e.g., glitch effects, duration).</li>
+                <li>The script creates videos and uploads them automatically to your TikTok account as drafts or direct posts.</li>
+                <li>Monitor logs for success and any API errors.</li>
             </ol>
-            <p>Here's a sample glitch vibe video created by the script:</p>
+            <p>Here's a sample glitch vibe video created and ready for upload:</p>
             <video controls>
-                <source src="sample-glitch-video.mp4" type="video/mp4"> <!-- Add a sample.mp4 to your repo -->
+                <source src="What%20if%20Satellites%20detected%20false%20missiles.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <!-- Optional: Add screenshots -->
+            <p>Example bot output:</p>
+            <img src="bot-screenshot.png" alt="Screenshot of script running and uploading a video"> <!-- Upload a PNG to repo root -->
+        </section>
+
+        <section id="security">
+            <h2>Security & Privacy</h2>
+            <p>We prioritize your data: The script runs locally on your machine, so TikTok credentials never leave your device. We only request minimal scopes for uploads (user.info.basic, video.upload, video.publish). No user data is collected or shared. For details, see our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
         </section>
 
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you have questions or need support, visit our <a href="https://github.com/realityglitch247/-tiktok-poster">GitHub repository</a> or open an issue there. For bug reports or feature requests, include details about your setup.</p>
+            <p>If you have questions, need support, or want to report issues, visit our <a href="https://github.com/realityglitch247/-tiktok-poster">GitHub repository</a> or open an issue there. Include logs or screenshots for faster help.</p>
         </section>
     </main>
 
@@ -205,8 +215,7 @@
         if (authCode) {
             document.getElementById('oauth-code').textContent = authCode;
             document.getElementById('oauth-status').style.display = 'block';
-            // Optional: Clear the query params from URL for cleanliness
-            history.replaceState(null, null, window.location.pathname);
+            history.replaceState(null, null, window.location.pathname); // Clear query params
         }
     </script>
 </body>
